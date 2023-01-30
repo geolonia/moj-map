@@ -35,7 +35,7 @@
     map.on('load', () => {
       map.addSource('moj', {
         type: 'vector',
-        url: 'pmtiles://https://gl-files-public.s3.ap-northeast-1.amazonaws.com/moj-all.pmtiles',
+        url: 'https://tileserver-dev.geolonia.com/moj_regmap/tiles.json?key=YOUR-API-KEY',
       });
       map.addLayer({
         id: 'moj/pointHeatmap',
@@ -49,7 +49,7 @@
           'heatmap-weight': [
             'interpolate',
             ['linear'],
-            ['get', 'point_count'],
+            ['get', 'sqrt_point_count'],
             0,
             0,
             100,
@@ -90,11 +90,11 @@
           'heatmap-radius': [
             'interpolate',
             ['linear'],
-            ['get', 'sqrt_point_count'],
+            ['get', 'point_count'],
             0,
             2,
             100,
-            20
+            30
           ],
         }
       });
